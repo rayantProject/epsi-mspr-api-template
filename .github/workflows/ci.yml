@@ -1,34 +1,27 @@
-name: CI Pipeline
+name: CI
 
 on:
-  push:
-    branches:
-      - '*'  # Déclenche sur push sur n'importe quelle branche
-  pull_request:
-    branches:
-      - '*'  # Déclenche sur pull request sur n'importe quelle branche
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Run ESLint
-        run: yarn eslint .
-
-      - name: Run TypeScript Compiler
-        run: yarn tsc
-
-      - name: Run tests
-        run: yarn test
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: '16.x'
+            - name: Install dependencies
+              run: npm install
+            - name: Lint
+              run: npm run lint
+            - name: Check types
+              run: npm run check:types
+            - name: Build
+              run: npm run build
+            - name: Test
+              run: npm test

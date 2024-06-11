@@ -1,0 +1,34 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - '*'  # Déclenche sur push sur n'importe quelle branche
+  pull_request:
+    branches:
+      - '*'  # Déclenche sur pull request sur n'importe quelle branche
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run ESLint
+        run: yarn eslint .
+
+      - name: Run TypeScript Compiler
+        run: yarn tsc
+
+      - name: Run tests
+        run: yarn test

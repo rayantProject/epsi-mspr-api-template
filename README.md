@@ -1,4 +1,4 @@
-# base-for-typescript-webpack-pm2-project
+# epsi-mspr-api-template
 
 ![version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 
@@ -11,7 +11,7 @@
 
 ## About <a name = "about"></a>
 
-This is a base project for a typescript webpack pm2 project, that can be used as a starting nodejs project.
+This is a base for an API typescript webpack pm2 project, that can be used as a starting nodejs project.
 The project have 2 modes, development and production.
 Also the project have a test mode, that can be used to run tests.
 
@@ -72,3 +72,7 @@ or with yarn
 ```bash
 yarn test
 ```
+
+## How to do commit
+
+based on [Conventional Commits](./commitdoc.md)
